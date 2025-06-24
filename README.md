@@ -27,11 +27,11 @@ module "hcloud_fcos_takeover" {
 resource "hcloud_server" "fcos_server" {
   name        = "fcos"
   image       = "fedora-42"
-  server_type = "cx22"
+  server_type = "cx22" # at least 4 GB memory
   public_net {
     ipv4_enabled = true
   }
-  user_data = module.hcloud-fcos-takeover.user_data
+  user_data = module.hcloud_fcos_takeover.user_data
 }
 ```
 - Wait a couple of minutes
