@@ -38,7 +38,7 @@ resource "hcloud_server" "fcos_server" {
 
 ## Limitations
 - Fedora CoreOS is installed using `kexec` after loading a modified live image to the main memory. As a result, you need a machine type with at least 4 GB of memory.
-- The `image` for `hcloud_server` has to be Fedora, since the installer expects that.
+- The `image` for `hcloud_server` has to be Fedora, since [takeover.sh](./tpl/takeover.sh) expects Fedora-specific tooling.
 
 ## Disclaimer
 Check *LICENSE* for details. If this tool eats your dog, it's not my fault.
