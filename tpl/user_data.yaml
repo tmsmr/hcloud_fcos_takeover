@@ -1,0 +1,18 @@
+#cloud-config
+
+ssh_authorized_keys:
+  - ${authorized_key}
+
+write_files:
+  - path: /config.ign
+    permissions: 0600
+    content: |
+      ${ignition_config}
+
+  - path: /takeover.sh
+    permissions: 0700
+    content: |
+      ${takeover_script}
+
+runcmd:
+  - /takeover.sh
