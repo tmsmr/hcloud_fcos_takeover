@@ -35,7 +35,7 @@ resource "hcloud_server" "fcos_server" {
 
 ## Variables
 Besides `butane_config`, you might want to set the following variables:
-- `authorized_key_bootstrap`: 
+- `authorized_key_bootstrap`: Will be set in cloud-init during the bootstrap phase.
 - `install_device` (defaults to `/dev/sda`)
 - `hcloud_console` (defaults to `ttyS0`)
 - `pre_takeover`: Shell command to run before the takeover script is executed
