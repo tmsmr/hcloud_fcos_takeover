@@ -1,7 +1,9 @@
 #cloud-config
 
+%{ if length(authorized_key_bootstrap) > 0 ~}
 ssh_authorized_keys:
-  - ${authorized_key}
+  - ${authorized_key_bootstrap}
+%{ endif ~}
 
 write_files:
   - path: /config.ign
@@ -15,4 +17,10 @@ write_files:
       ${takeover_script}
 
 runcmd:
+  %{ if length(pre_takeover) > 0 ~}
+  - ${pre_takeover}
+  %{ endif ~}
   - /takeover.sh
+  %{ if length(post_takeover) > 0 ~}
+  - ${post_takeover}
+  %{ endif ~}
